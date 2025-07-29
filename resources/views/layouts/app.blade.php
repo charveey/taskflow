@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="transition-colors duration-200">
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -18,22 +18,19 @@
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-neutral-800">
+        <div class="min-h-screen w-screen flex bg-neutral-100 dark:bg-neutral-800">
+
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow dark:bg-neutral-900">
-                    <div class="mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+            <section class="w-full">
+                <!-- Page Heading -->
+                <x-header :header="$header" />
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
+            </section>
         </div>
     </body>
 </html>
