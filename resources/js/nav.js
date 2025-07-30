@@ -4,7 +4,7 @@ let nav = document.querySelector('nav');
 
 if(localStorage.getItem('expandNav') === 'true') {
     document.getElementById('navigation-links').classList.add('collapsed')
-    nav.style.width = '62px';
+    nav.style.width = '60px';
 } else {
     document.getElementById('navigation-links').classList.remove('collapsed')
     nav.style.width = '254px';
@@ -12,7 +12,7 @@ if(localStorage.getItem('expandNav') === 'true') {
 
 if(window.innerWidth < 640) {
     document.getElementById('navigation-links').classList.add('collapsed');
-    nav.style.width = '62px';
+    nav.style.width = '60px';
 }
 
 btn.addEventListener('click', () => {
@@ -21,7 +21,7 @@ btn.addEventListener('click', () => {
         nav.style.width = '254px';
     } else {
         localStorage.setItem('expandNav', 'true');
-        nav.style.width = '62px';
+        nav.style.width = '60px';
     } 
     document.getElementById('navigation-links').classList.toggle('collapsed');
 })

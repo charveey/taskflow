@@ -22,6 +22,10 @@
     @apply size-[18px];
 }
 
-#navigation-links.collapsed #profile-dropdown {
+#navigation-links.collapsed #profile-dropdown button svg:first-child {
+    @apply size-5;
+}
+
+#navigation-links.collapsed #profile-dropdown button svg:last-child {
     @apply hidden;
 }
