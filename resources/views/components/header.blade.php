@@ -4,7 +4,7 @@
         {{-- toggle nav --}}
         <x-toggle-nav style="mr-2"/>
 
-        <h1 class="text-lg font-semibold text-neutral-800 dark:text-neutral-200">
+        <h1 class="text-lg text-neutral-600 dark:text-neutral-200">
             {{ $header ?? '' }}
         </h1>
 

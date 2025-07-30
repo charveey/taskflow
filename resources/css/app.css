@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#navigation-links {
+    @apply w-56;
+}
+
+#navigation-links.collapsed {
+    @apply w-fit;
+}
+
+#navigation-links.collapsed #nav-logo {
+    @apply hidden;
+}
+
+#navigation-links.collapsed span {
+    @apply hidden;
+}
+
+#navigation-links.collapsed svg {
+    @apply size-[18px];
+}
+
+#navigation-links.collapsed #profile-dropdown {
+    @apply hidden;
+}
