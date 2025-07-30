@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -35,8 +36,16 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $baseSlug = Str::slug($request->name);
+        $slug = $baseSlug;
+        $count = 1;
+        while (User::where('slug', $slug)->exists()) {
+            $slug = $baseSlug . '-' . $count++;
+        }
+
         $user = User::create([
             'name' => $request->name,
+            'slug' => $slug,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
