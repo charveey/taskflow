@@ -5,7 +5,7 @@
             <!-- Logo -->
             <div id="nav-logo" class="mx-auto my-5">
                 <a href="{{ route('dashboard') }}">
-                    <x-application-logo class="block h-9 w-auto fill-current" />
+                    <x-application-logo />
                 </a>
             </div>
             
