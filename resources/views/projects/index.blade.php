@@ -5,7 +5,9 @@
     </x-slot>
 
     <div class="p-3 md:p-4 dark:text-neutral-50">
-        <p>Projects</p>
+        
+        <x-create-project />
+
     </div>
 
 </x-app-layout>

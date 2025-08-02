@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
 
     // project routes
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::post('/projects/create', [ProjectController::class, 'store'])->name('projects.store');
 
     // profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

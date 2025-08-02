@@ -1,4 +1,4 @@
-<nav class="h-full">
+<nav class="h-screen">
     <!-- Primary Navigation Menu -->
     <div id="navigation-links" class="h-full fixed top-0 mx-auto p-2.5 sm:p-3 bg-white border-r border-r-neutral-200 dark:border-r-neutral-800 dark:bg-neutral-900 dark:border-neutral-800">
         <div class="h-full flex flex-col gap-6 justify-start">
