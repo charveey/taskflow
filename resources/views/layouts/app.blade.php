@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme.js', 'resources/js/nav.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen w-full flex bg-neutral-100 dark:bg-neutral-800">
+        <div class="min-h-screen w-full flex gap-0.5 bg-neutral-100 dark:bg-neutral-800">
 
             <!-- Navigation -->
             @include('layouts.navigation')

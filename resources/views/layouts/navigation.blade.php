@@ -1,4 +1,4 @@
-<nav class="w-64 h-full">
+<nav class="h-full">
     <!-- Primary Navigation Menu -->
     <div id="navigation-links" class="h-full fixed top-0 mx-auto p-2.5 sm:p-3 bg-white border-r border-r-neutral-200 dark:border-r-neutral-800 dark:bg-neutral-900 dark:border-neutral-800">
         <div class="h-full flex flex-col gap-6 justify-start">
@@ -18,8 +18,8 @@
                     </svg>
                     <span class="sm:inline">{{ __('Dashboard') }}</span>
                 </x-nav-link>
-                {{-- Dashboard --}}
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('/')">
+                {{-- projects --}}
+                <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                     </svg>

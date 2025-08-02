@@ -7,7 +7,7 @@ if(localStorage.getItem('expandNav') === 'true') {
     nav.style.width = '60px';
 } else {
     document.getElementById('navigation-links').classList.remove('collapsed')
-    nav.style.width = '254px';
+    nav.style.width = '256px';
 }
 
 if(window.innerWidth < 640) {
@@ -18,7 +18,7 @@ if(window.innerWidth < 640) {
 btn.addEventListener('click', () => {
     if(localStorage.getItem('expandNav') === 'true') {
         localStorage.setItem('expandNav', 'false') 
-        nav.style.width = '254px';
+        nav.style.width = '256px';
     } else {
         localStorage.setItem('expandNav', 'true');
         nav.style.width = '60px';
