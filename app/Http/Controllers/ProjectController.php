@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\ProjectUser;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -34,7 +36,12 @@ class ProjectController extends Controller
             'deadline' => request()->deadline,
         ]);
 
-        
+        ProjectUser::create([
+            'project_id' => $project->id,
+            'user_id' => Auth::id(),
+            'authority' => 'admin',
+        ]);
+
         return response()->json([
             'status' => 'Project Created Successfully',
         ]);

@@ -24,5 +24,3 @@ npm install
 ```
 npm run dev
 ```
-
-Now the project should be working correctly 

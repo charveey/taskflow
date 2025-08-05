@@ -4,8 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Project;
 
 class User extends Authenticatable
 {
@@ -46,4 +48,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function projects() {
+        $ids = $this->belongsToMany(Project::class, 'project_user', 'user_id', 'project_id')->pluck('project_id');
+        $projects = Project::whereIn('id', $ids)->orderBy('created_at', 'DESC')->get();
+        
+        return $projects;
+    }
+
 }
