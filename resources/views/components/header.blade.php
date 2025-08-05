@@ -1,4 +1,4 @@
-<header class="bg-white dark:bg-neutral-900">
+<header class="bg-white dark:bg-neutral-900 shadow-sm">
     <div class="flex py-2.5 px-2 sm:px-4">
 
         {{-- toggle nav --}}

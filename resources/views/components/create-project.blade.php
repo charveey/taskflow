@@ -10,7 +10,9 @@
             axios.post(`/projects/create?title=${this.title}&description=${this.description}&start_date=${this.start_date}&deadline=${this.deadline}`)
             .then(res => {
                 console.log(res)
-                if(res.status == 200) this.$root.dispatchEvent(new CustomEvent('close', { detail: 'create-project' }));
+                if(res.status == 200) {
+                    window.location.reload();
+                }
             })
             .catch(errs => {
                 this.errors = errs.response.data.errors
@@ -23,7 +25,7 @@
     <button
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'create-project')"
-        class="h-full min-h-40 w-full flex items-center justify-center transition-all text-neutral-400 hover:text-neutral-900 hover:bg-gray-200 border border-dashed border-neutral-500 rounded-2xl dark:hover:text-neutral-50 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+        class="h-full min-h-44 w-full flex items-center justify-center transition-all text-neutral-400 hover:text-neutral-900 hover:bg-gray-200 border border-dashed border-neutral-500 rounded-xl dark:hover:text-neutral-50 dark:bg-neutral-800 dark:hover:bg-neutral-700"
     >
         <div class="flex flex-col items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 block">

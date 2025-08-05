@@ -14,6 +14,13 @@ class ProjectController extends Controller
         return view('projects.index');
     }
 
+    public function show($slug) {
+        // slug is unique value
+        $project = Project::where('slug', $slug)->first();
+
+        return view('projects.show', ['project' => $project]);
+    }
+
     public function store() {
         
         request()->validate([
@@ -46,4 +53,5 @@ class ProjectController extends Controller
             'status' => 'Project Created Successfully',
         ]);
     }
+    
 }
