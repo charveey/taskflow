@@ -1,7 +1,10 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ __('Profile') }}
+        <div class="flex gap-1">
+            <x-back-button class="hover:text-white hover:bg-indigo-600 dark:hover:bg-indigo-800"/>
+            {{ __('Profile') }}
+        </div>
     </x-slot>
 
     <div class="py-12 px-3 sm:px-0">

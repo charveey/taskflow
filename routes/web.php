@@ -8,16 +8,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 
     // project routes
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::post('/projects/create', [ProjectController::class, 'store'])->name('projects.store');
-    Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
+    Route::get('/projects/{project:slug}/dashboard', [ProjectController::class, 'show'])->name('projects.show'); // this is also the dashboard
 
     // profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

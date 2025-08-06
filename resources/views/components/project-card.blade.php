@@ -1,6 +1,6 @@
 @props(['project'])
 
-<a href="{{ route('projects.show', $project) }}" class="block relative group h-full rounded-xl overflow-hidden shadow">
+<a href="{{ route('projects.show', $project) }}" class="block relative group h-full rounded-xl overflow-hidden hover:scale-[0.97] transition-transform shadow">
     {{-- title --}}
     <div class="h-20 md:h-24 flex items-center justify-center text-white bg-gradient-to-br from-indigo-600 to-indigo-500 dark:from-indigo-800 dark:to-indigo-800">
         <p class="px-2 text-lg md:text-2xl">{{ Str::words($project->title, 4) }}</p>
@@ -36,8 +36,5 @@
                 <p>{{ $project->usersCount() }}</p>
             </div>
         </div>
-        
-        {{-- hover layer --}}
-        <div class="absolute w-full h-full top-0 left-0 z-20 translate-y-full group-hover:-translate-y-0 transition-transform ease-out bg-gray-300 flex items-center justify-center text-2xl dark:bg-gray-700">Open Project</div>
     </div>
 </a>

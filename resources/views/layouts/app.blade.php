@@ -18,20 +18,15 @@
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme.js', 'resources/js/nav.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen w-full flex gap-0.5 bg-gray-100 dark:bg-neutral-800">
+        <div class="min-h-screen w-full bg-blue-50/90 dark:bg-neutral-800">
 
-            <!-- Navigation -->
-            @include('layouts.navigation')
+            <!-- Page Heading -->
+            <x-header :header="$header" />
 
-            <section class="w-full">
-                <!-- Page Heading -->
-                <x-header :header="$header" />
-
-                <!-- Page Content -->
-                <main>
-                    {{ $slot }}
-                </main>
-            </section>
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
         </div>
     </body>
 </html>
