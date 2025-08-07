@@ -19,6 +19,13 @@ class Project extends Model
     public function users() {
         $ids = $this->belongsToMany(User::class, 'project_user', 'project_id', 'user_id')->pluck('user_id');
         $users = User::whereIn('id', $ids)->get();
+        
+        $authorities = $this->belongsToMany(User::class, 'project_user', 'project_id', 'user_id')->pluck('authority');
+        
+        $i = 0;
+        foreach($users as $user) {
+            $user->authority = $authorities[$i++];
+        }
 
         return $users;
     }

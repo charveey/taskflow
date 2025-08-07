@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme.js', 'resources/js/nav.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen w-full bg-blue-50/90 dark:bg-neutral-800">
+        <div class="min-h-screen w-full bg-blue-50/90 dark:bg-neutral-900/90">
 
             <!-- Page Heading -->
             <x-header :header="$header" />
