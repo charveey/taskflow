@@ -54,4 +54,11 @@ class ProjectController extends Controller
         ]);
     }
     
+    public function users($slug) {
+        // slug is unique value
+        $project = Project::where('slug', $slug)->first();
+
+        return view('projects.users', ['project' => $project]);
+    }
+
 }

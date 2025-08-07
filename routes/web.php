@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::post('/projects/create', [ProjectController::class, 'store'])->name('projects.store');
     Route::get('/projects/{project:slug}/dashboard', [ProjectController::class, 'show'])->name('projects.show'); // this is also the dashboard
+    Route::get('/projects/{project:slug}/users', [ProjectController::class, 'users'])->name('projects.users'); // users page
     // add user to project
 
 

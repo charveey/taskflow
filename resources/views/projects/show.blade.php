@@ -12,7 +12,7 @@
             </div>
         </x-slot>
     
-        <div class="dark:text-gray-100">
+        <div class="dark:text-gray-200">
     
             <div class="w-full flex items-start gap-2 py-2 px-3 md:px-4 bg-indigo-600 dark:bg-indigo-800 text-white">
                 <h2 class="text-xl md:text-2xl lg:text-4xl xl:text-5xl py-4 md:py-6 lg:py-9 font-semibold">{{ Str::words($project->title, 10) }}</h2>

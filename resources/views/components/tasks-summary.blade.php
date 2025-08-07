@@ -7,7 +7,7 @@
     </div>
     <div class="lg:mt-6 lg:h-4/5 grid grid-cols-1 md:grid-cols-2 gap-2">
         {{-- todo --}}
-        <div class="flex gap-3 items-center bg-blue-50 text-blue-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-blue-400 border border-blue-400">
+        <div class="flex gap-3 items-center bg-blue-50 text-blue-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-blue-300 border border-blue-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
             </svg>
@@ -15,7 +15,7 @@
             <p class="ml-auto">3</p>
         </div>
         {{-- process --}}
-        <div class="flex gap-3 items-center bg-yellow-50 text-yellow-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-yellow-300 border border-yellow-300">
+        <div class="flex gap-3 items-center bg-yellow-50 text-yellow-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-yellow-200 border border-yellow-200">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
@@ -23,7 +23,7 @@
             <p class="ml-auto">5</p>
         </div>
         {{-- done --}}
-        <div class="flex gap-3 items-center bg-green-50 text-green-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-green-400 border border-green-400">
+        <div class="flex gap-3 items-center bg-green-50 text-green-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-green-300 border border-green-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
@@ -31,7 +31,7 @@
             <p class="ml-auto">8</p>
         </div>
         {{-- canceled --}}
-        <div class="flex gap-3 items-center bg-red-50 text-red-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-red-400 border border-red-400">
+        <div class="flex gap-3 items-center bg-red-50 text-red-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-red-300 border border-red-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
@@ -40,7 +40,7 @@
         </div>
         {{-- details --}}
         <a href="/" class="block col-span-2">
-            <x-secondary-button class="w-full">
+            <x-secondary-button class="w-full capitalize">
                 <span>more details</span>
             </x-secondary-button>
         </a>

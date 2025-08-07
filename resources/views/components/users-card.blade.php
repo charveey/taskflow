@@ -13,23 +13,23 @@
     {{-- users --}}
     <div class="pt-2 flex flex-col md:h-[90%]">
 
-        @foreach($project->users() as $user)
+        @foreach($project->users->take(3) as $user)
             <div class="flex items-center px-2 py-1 text-gray-900 whitespace-nowrap dark:text-gray-100">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 dark:text-gray-300">
+                {{-- avatar --}}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 dark:text-gray-400">
                 <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
                 </svg>
-
                 <div class="ps-3">
                     <div class="font-semibold -mb-1">{{ $user->name }}</div>
                     <div class="font-normal text-gray-500 dark:text-gray-400">{{ $user->email }}</div>
                 </div>  
-                <p class="ml-auto capitalize">{{ $user->authority }}</p>
+                <p class="ml-auto capitalize">{{ $user->pivot->authority }}</p>
             </div>
         @endforeach
 
         {{-- details --}}
-        <x-secondary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'show-more-users')" class="mt-2 md:mt-auto">
-            <span>{{ $project->usersCount() > 3 ? '' : 'show all users'}}</span>
+        <x-secondary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'show-more-users')" class="mt-2 md:mt-auto capitalize">
+            <span>{{ $project->usersCount() > 3 ? '+'.($project->usersCount() - 3).' more users' : 'show all users'}}</span>
         </x-secondary-button>
     </div>
 
@@ -45,15 +45,17 @@
             {{-- users --}}
             <div class="h-fit pt-2 flex flex-col">
                 {{-- add user --}}
-                <a href="/" class="block my-3">
-                    <x-primary-button class="w-full">
-                        Add User
-                    </x-primary-button>
-                </a>
+                <div class="my-3">
+                    <a href="{{ route('projects.users', $project) }}" class="block">
+                        <x-primary-button class="w-full">
+                            Add User
+                        </x-primary-button>
+                    </a>
+                </div>
 
-                @foreach($project->users() as $user)
+                @foreach($project->users as $user)
                     <div class="flex items-center px-2 py-1 text-gray-900 whitespace-nowrap dark:text-gray-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 dark:text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 dark:text-gray-400">
                         <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
                         </svg>
 
@@ -61,7 +63,7 @@
                             <div class="font-semibold -mb-1">{{ $user->name }}</div>
                             <div class="font-normal text-gray-500 dark:text-gray-400">{{ $user->email }}</div>
                         </div>  
-                        <p class="ml-auto capitalize">{{ $user->authority }}</p>
+                        <p class="ml-auto capitalize">{{ $user->pivot->authority }}</p>
                     </div>
                 @endforeach
             </div>
