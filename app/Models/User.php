@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -55,6 +56,16 @@ class User extends Authenticatable
         $projects = Project::whereIn('id', $ids)->orderBy('created_at', 'DESC')->get();
         
         return $projects;
+    }
+
+    public function getAuthority($project_id) {
+        
+        $record = ProjectUser::where('user_id', Auth::id())
+                                ->where('project_id', $project_id)
+                                ->first();
+
+        return $record->authority;
+        
     }
 
 }

@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
     // search for user
     Route::get('/users/search', [SearchController::class, 'search'])->name('search');
     // add user to project
+    Route::get('/add/user', [ProjectController::class, 'addUser'])->name('projects.adduser');
+    // remove user from project
+    Route::delete('/remove/{project}/{user}', [ProjectController::class, 'removeUser'])->name('projects.removeuser');
 
 
     // profile routes

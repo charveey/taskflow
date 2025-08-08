@@ -61,4 +61,57 @@ class ProjectController extends Controller
         return view('projects.users', ['project' => $project]);
     }
 
+    public function addUser() {
+
+        $project_id = request()->query('project_id');
+        $user_id = request()->query('user_id');
+
+        if(auth()->user()->getAuthority($project_id) != 'admin') {
+            abort(403);
+        }
+
+        $alreadyAdded = ProjectUser::where('project_id', $project_id)
+                            ->where('user_id', $user_id)
+                            ->exists();
+
+        $project = Project::where('id', $project_id)->first();
+
+        if(!$alreadyAdded) {
+            ProjectUser::create([
+                'project_id' => $project_id,
+                'user_id' => $user_id,
+                'authority' => 'user',
+            ]);
+
+            return to_route('projects.users', ['project' => $project])
+                    ->with(['status' => 'user has been added successfully']);
+        }
+
+        return to_route('projects.users', ['project' => $project])
+                    ->with(['error' => 'user already added to project']);
+    }
+
+    public function removeUser($project_id, $user_id) {
+
+        if(auth()->user()->getAuthority($project_id) != 'admin') {
+            abort(403);
+        }
+
+        $record = ProjectUser::where('project_id', $project_id)
+                            ->where('user_id', $user_id)
+                            ->first();
+
+        $project = Project::where('id', $project_id)->first();
+
+        if($record && Auth::id() != $user_id) {
+            $record->delete();
+
+            return to_route('projects.users', ['project' => $project])
+                    ->with(['status' => 'user has been removed']);
+        }
+
+        return to_route('projects.users', ['project' => $project])
+                    ->with(['error' => 'could not remove user']);
+    }
+
 }

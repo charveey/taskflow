@@ -31,7 +31,7 @@
 
     {{-- modal --}}
     <x-modal name="add-user" :show="false" focusable>
-        <div class="min-h-52 p-4 md:p-6 dark:bg-neutral-900">
+        <div class="min-h-44 p-4 md:p-6 dark:bg-neutral-900">
 
             <div class="flex flex-wrap gap-2 items-center">
                 <h2 class="md:text-lg">Add User To </h2>
@@ -55,7 +55,7 @@
                                 <div x-text="suggestion.name" class="font-semibold -mb-1"></div>
                                 <div x-text="suggestion.email" class="font-normal text-gray-500 dark:text-gray-400">m@gmail.com</div>
                             </div>  
-                            <a href="/" class="ml-auto">
+                            <a :href="`/add/user?project_id={{$project->id}}&user_id=${suggestion.id}`" class="ml-auto">
                                 <x-secondary-button class="capitalize">
                                     add
                                 </x-secondary-button>
