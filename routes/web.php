@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/projects/create', [ProjectController::class, 'store'])->name('projects.store');
     Route::get('/projects/{project:slug}/dashboard', [ProjectController::class, 'show'])->name('projects.show'); // this is also the dashboard
     Route::get('/projects/{project:slug}/users', [ProjectController::class, 'users'])->name('projects.users'); // users page
+    // search for user
+    Route::get('/users/search', [SearchController::class, 'search'])->name('search');
     // add user to project
 
 

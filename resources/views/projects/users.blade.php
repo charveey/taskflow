@@ -13,15 +13,8 @@
                 {{ __('Users') }}
             </div>
         </x-slot>
-    
-        {{-- add user --}}
-        <div class="py-4 md:py-5">
-            <a href="{{ route('projects.users', $project) }}" class="block">
-                <x-primary-button class="w-44 ml-[64px] md:ml-6 shadow-sm">
-                    Add User
-                </x-primary-button>
-            </a>
-        </div>
+
+        <x-add-user :project='$project' />
 
         <div class="ml-[56px] md:ml-0 shadow-sm overflow-x-auto dark:text-gray-100">
     
