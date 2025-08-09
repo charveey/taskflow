@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SearchController;
@@ -29,6 +30,10 @@ Route::middleware('auth')->group(function () {
     // tasks
     Route::get('{project:slug}/tasks', [TaskController::class, 'index'])->name('tasks.index');
     Route::post('tasks/create', [TaskController::class, 'store'])->name('tasks.store');
+    Route::delete('{project}/{task}/delete', [TaskController::class, 'destroy'])->name('tasks.destroy');
+    
+    // board
+    Route::get('{project:slug}/board', [BoardController::class, 'index'])->name('board.index');
 
     // profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

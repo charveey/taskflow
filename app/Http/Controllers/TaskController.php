@@ -46,4 +46,26 @@ class TaskController extends Controller
         ]);
         
     }
+
+    public function destroy($project_id, $task_id)  {
+        
+        $task = Task::where('project_id', $project_id)
+                    ->where('id', $task_id)
+                    ->first();
+
+        $project = Project::where('id', $project_id)->first();
+
+        if($task) {
+            $task->delete();
+            
+            return to_route('tasks.index', ['project' => $project])->with([
+                'status' => 'Task has been removed',
+            ]);
+        }
+
+        return to_route('tasks.index', ['project' => $project])->with([
+            'error' => 'Error when trying to remove task',
+        ]);
+
+    }
 }
