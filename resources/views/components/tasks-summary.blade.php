@@ -1,3 +1,5 @@
+@props(['project', 'tasks'])
+
 <div class="w-full p-2.5 border border-gray-300 shadow-sm bg-white dark:border-none dark:bg-neutral-900 rounded-md">
     <div class="flex items-start gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -12,15 +14,15 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
             </svg>
             <span>todo</span>
-            <p class="ml-auto">3</p>
+            <p class="ml-auto">{{ $tasks->where('status', 'todo')->count() }}</p>
         </div>
-        {{-- process --}}
+        {{-- progress --}}
         <div class="flex gap-3 items-center bg-yellow-50 text-yellow-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-yellow-200 border border-yellow-200">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
-            <span>process</span>
-            <p class="ml-auto">5</p>
+            <span>progress</span>
+            <p class="ml-auto">{{ $tasks->where('status', 'progress')->count() }}</p>
         </div>
         {{-- done --}}
         <div class="flex gap-3 items-center bg-green-50 text-green-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-green-300 border border-green-300">
@@ -28,7 +30,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
             <span>done</span>
-            <p class="ml-auto">8</p>
+            <p class="ml-auto">{{ $tasks->where('status', 'done')->count() }}</p>
         </div>
         {{-- canceled --}}
         <div class="flex gap-3 items-center bg-red-50 text-red-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-red-300 border border-red-300">
@@ -36,10 +38,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
             <span>canceled</span>
-            <p class="ml-auto">1</p>
+            <p class="ml-auto">{{ $tasks->where('status', 'canceled')->count() }}</p>
         </div>
         {{-- details --}}
-        <a href="/" class="block col-span-2">
+        <a href="{{ route('tasks.index', $project) }}" class="block col-span-2">
             <x-secondary-button class="w-full capitalize">
                 <span>more details</span>
             </x-secondary-button>

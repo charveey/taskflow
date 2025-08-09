@@ -28,4 +28,11 @@ class Project extends Model
         return $this->hasMany(Task::class);
     }
 
+    public function completedAvg() {
+        $tasks = $this->tasks()->count();
+        $doneTasks = $this->tasks()->where('status', 'done')->count();
+
+        return round( $doneTasks * 100 / $tasks );
+    }
+
 }

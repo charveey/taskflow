@@ -27,7 +27,7 @@
         </thead>
         <tbody>
             @foreach($tasks as $task)
-                <tr class="bg-white border-b dark:bg-neutral-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">
+                <tr class="bg-white border-b dark:bg-neutral-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-neutral-700">
                     <th scope="row" class="flex items-center px-4 py-3 text-gray-900 whitespace-nowrap dark:text-white">
                         {{-- title --}}
                         <div class="ps-3">

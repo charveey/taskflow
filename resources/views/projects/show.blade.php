@@ -26,7 +26,7 @@
                 <x-users-card :project="$project"/>
     
                 {{-- tasks summary --}}
-                <x-tasks-summary />
+                <x-tasks-summary :project="$project" :tasks="$project->tasks"/>
             </div>
     </x-app-layout>
 </div>
