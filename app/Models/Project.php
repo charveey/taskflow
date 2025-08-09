@@ -24,4 +24,8 @@ class Project extends Model
         return $this->users()->count();
     }
 
+    public function tasks() {
+        return $this->hasMany(Task::class);
+    }
+
 }

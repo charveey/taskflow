@@ -45,13 +45,15 @@
             {{-- users --}}
             <div class="h-fit pt-2 flex flex-col">
                 {{-- add user --}}
-                <div class="my-3">
-                    <a href="{{ route('projects.users', $project) }}" class="block">
-                        <x-primary-button class="w-full">
-                            Add User
-                        </x-primary-button>
-                    </a>
-                </div>
+                @if(auth()->user()->getAuthority($project->id) == 'admin')
+                    <div class="my-3">
+                        <a href="{{ route('projects.users', $project) }}" class="block">
+                            <x-primary-button class="w-full">
+                                Add User
+                            </x-primary-button>
+                        </a>
+                    </div>
+                @endif
 
                 @foreach($project->users as $user)
                     <div class="flex items-center px-2 py-1 text-gray-900 whitespace-nowrap dark:text-gray-100">

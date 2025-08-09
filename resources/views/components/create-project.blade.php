@@ -23,7 +23,6 @@
     }"
 >
     <button
-        x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'create-project')"
         class="h-full min-h-44 w-full flex items-center justify-center transition-all text-neutral-400 hover:text-neutral-900 hover:bg-gray-200 border border-dashed border-neutral-500 rounded-xl dark:hover:text-neutral-50 dark:bg-neutral-800 dark:hover:bg-neutral-700"
     >
