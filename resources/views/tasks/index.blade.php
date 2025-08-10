@@ -45,7 +45,7 @@
 
             {{-- add task --}}
             @if (auth()->user()->getAuthority($project->id) == 'admin')
-                <div class="ml-[56px] md:ml-0 mb-4">
+                <div class="ml-[64px] md:ml-0 mb-4 mt-4 md:mt-0">
                     <x-create-task :project="$project" />
                 </div>
             @endif

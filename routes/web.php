@@ -35,6 +35,11 @@ Route::middleware('auth')->group(function () {
     
     // board
     Route::get('{project:slug}/board', [BoardController::class, 'index'])->name('board.index');
+    // get all the tasks
+    Route::get('/board/tasks/all', [BoardController::class, 'getTasks']);
+    // update task status
+    Route::post('/task/status/update', [BoardController::class, 'updateStatus'])->name('board.updateStatus');
+
 
     // profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
