@@ -1,6 +1,6 @@
 @props(['task'])
 
-<div {{ $attributes->merge(['class'=> 'bg-white dark:bg-neutral-900 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:bg-neutral-800 dark:border-neutral-800']) }}>
+<div {{ $attributes->merge(['class'=> 'bg-white dark:bg-neutral-900 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:bg-neutral-900/80 dark:border-neutral-700']) }}>
     <p class="mb-1">{{ $task->title }}</p>
     <div class="flex items-center justify-between text-gray-900 whitespace-nowrap dark:text-gray-100">
         {{-- avatar & name --}}

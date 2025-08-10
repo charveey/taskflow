@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     // tasks
     Route::get('{project:slug}/tasks', [TaskController::class, 'index'])->name('tasks.index');
     Route::post('tasks/create', [TaskController::class, 'store'])->name('tasks.store');
+    Route::put('tasks/{task}/edit', [TaskController::class, 'update'])->name('tasks.update');
     Route::delete('{project}/{task}/delete', [TaskController::class, 'destroy'])->name('tasks.destroy');
     
     // board

@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($tasks as $task)
+            @foreach($tasks->sortBy('created_at') as $task)
                 <tr class="bg-white border-b dark:bg-neutral-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-neutral-700">
                     <th scope="row" class="flex items-center px-4 py-3 text-gray-900 whitespace-nowrap dark:text-white">
                         {{-- title --}}
@@ -36,18 +36,18 @@
                     </th>
                     {{-- description --}}
                     <td class="max-w-52 px-4 py-3">
-                        <div class="text-sm">{{ $task->description }}</div>
+                        <div class="text-sm">{{ $task->description ?? '-' }}</div>
                     </td>
                     {{-- status --}}
                     <td class="px-4 py-3">
                         <div class="flex items-center capitalize">
-                            {{ $task->status }} 
+                            {{ $task->status }}
                         </div>
                     </td>
                     {{-- priority --}}
                     <td class="px-4 py-3">
                         <div class="flex items-center capitalize">
-                            {{ $task->priority }} 
+                            <x-badge priority="{{ $task->priority }}" /> 
                         </div>
                     </td>
                     {{-- assigned to --}}
@@ -56,32 +56,18 @@
                             {{ $task->user->name }} 
                         </div>
                     </td>
-                    {{-- remove task (if auth is admin) --}}
+                    {{-- actions (if auth is admin) --}}
                     <td class="px-4 py-3">
                         @if( auth()->user()->getAuthority($task->project->id) == 'admin' )
-                            <button x-on:click="$dispatch('open-modal', 'remove-task-{{$task->id}}')" class="font-medium text-red-600 dark:text-red-500 hover:underline">remove</button>
+                            <div class="flex gap-2">
+                                <x-remove-task :task="$task" />
+                                <x-edit-task :task="$task" />
+                            </div>
                         @else
                             <span>-</span>
                         @endif
                     </td>
                 </tr>
-                <x-modal name="remove-task-{{$task->id}}" :show="false" focusable maxWidth="sm">
-                    <div class="flex flex-col gap-2 p-4 md:p-6 dark:bg-neutral-900">
-                        <p>You are about to remove <b>{{ $task->title }}</b> task from <b>{{ $task->project->title }}</b></p>
-                        <form action="{{ route('tasks.destroy', ['project' => $task->project, 'task' => $task]) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <div class="w-fit ml-auto">
-                                <x-secondary-button x-on:click="$dispatch('close')" class="capitalize">
-                                    cancel
-                                </x-secondary-button>
-                                <x-danger-button class="capitalize">
-                                    remove
-                                </x-danger-button>
-                            </div>
-                        </form>
-                    </div>
-                </x-modal>
             @endforeach
         </tbody>
     </table>

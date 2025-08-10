@@ -47,6 +47,40 @@ class TaskController extends Controller
         
     }
 
+    public function update($task_id) {
+
+        request()->validate([
+            'title' => 'required',
+            'assign_to' => 'required',
+            'priority' => 'required',
+        ]);
+
+        $task = Task::findOrFail($task_id);
+
+        $baseSlug = Str::slug(request()->title);
+        $slug = $baseSlug;
+
+        if(request()->title != $task->title) {
+            $count = 1;
+            while(Project::where('slug', $slug)->exists()) {
+                $slug = $baseSlug . '-' . $count++;
+            }
+        }
+
+        $task->update([
+            'title' => request()->title,
+            'slug' => $slug,
+            'description' => request()->description,
+            'priority' => request()->priority,
+            'user_id' => request()->assign_to,
+        ]);
+
+        return to_route('tasks.index', ['project' => $task->project])->with([
+            'status' => 'task updated successfully'
+        ]);
+        
+    }
+
     public function destroy($project_id, $task_id)  {
         
         $task = Task::where('project_id', $project_id)

@@ -12,7 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- logo -->
-        <link rel="icon" href="{{ asset('logo.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme.js', 'resources/js/nav.js'])
