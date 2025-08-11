@@ -2,9 +2,9 @@
 
 <div x-data="board()" x-init="init()" class="w-full lg:max-w-5xl my-6 p-4 px-8 flex flex-col md:flex-row gap-4 mx-auto bg-white min-h-[480px] shadow rounded-md dark:bg-neutral-900">
     {{-- todo --}}
-    <x-tasks-board-column title="Todo" @drop="drop($event, 'todo')" @dragover.prevent="">
+    <x-tasks-board-column title="Todo" x-sort @drop="drop($event, 'todo')" @dragover.prevent="">
         <template x-for="task in tasks.filter(t => t.status == 'todo')">
-            <div draggable="true" @dragstart="drag(task.id)" class="cursor-grab bg-white dark:bg-neutral-900 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:bg-neutral-900/80 dark:border-neutral-800">
+            <div draggable="true" x-sort:item @dragstart="drag(task.id)" class="cursor-grab bg-white dark:bg-neutral-900 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:bg-neutral-900/80 dark:border-neutral-800">
                 <p class="mb-2" x-text="task.title"></p>
                 <div class="flex items-center justify-between text-gray-900 whitespace-nowrap dark:text-gray-300">
                     {{-- avatar & name --}}
@@ -115,6 +115,7 @@
                         console.log(res.data)
                     })
                     .catch(errs => console.log(errs))
+                    
             },
         }
     }

@@ -18,6 +18,10 @@ php artisan migrate
 Install node packages and run
 
 ```
+npm install @alpinejs/sort
+```
+
+```
 npm install
 ```
 

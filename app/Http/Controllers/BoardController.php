@@ -19,7 +19,8 @@ class BoardController extends Controller
 
         $project_id = request()->query('project_id');
 
-        $tasks = Task::with('user')->where('project_id', $project_id)->get();
+        $tasks = Task::with('user')->where('project_id', $project_id)
+                ->get();
 
         return response()->json([
             'tasks' => $tasks
