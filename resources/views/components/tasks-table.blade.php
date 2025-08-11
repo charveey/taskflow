@@ -9,9 +9,6 @@
                     title
                 </th>
                 <th scope="col" class="px-4 py-3">
-                    description
-                </th>
-                <th scope="col" class="px-4 py-3">
                     status
                 </th>
                 <th scope="col" class="px-4 py-3">
@@ -28,15 +25,11 @@
         <tbody>
             @foreach($tasks->sortBy('created_at') as $task)
                 <tr class="bg-white border-b dark:bg-neutral-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-neutral-700">
-                    <th scope="row" class="flex items-center px-4 py-3 text-gray-900 whitespace-nowrap dark:text-white">
-                        {{-- title --}}
+                    {{-- title --}}
+                    <td scope="row" class="flex items-center px-4 py-3 text-gray-900 whitespace-nowrap dark:text-white">
                         <div class="ps-3">
-                            <div class="text-base font-semibold">{{ $task->title }}</div>
+                            <div class="text-base">{{ $task->title }}</div>
                         </div>  
-                    </th>
-                    {{-- description --}}
-                    <td class="max-w-52 px-4 py-3">
-                        <div class="text-sm">{{ $task->description ?? '-' }}</div>
                     </td>
                     {{-- status --}}
                     <td class="px-4 py-3">

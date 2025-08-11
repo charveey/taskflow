@@ -25,7 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/add/user', [ProjectController::class, 'addUser'])->name('projects.adduser');
     // remove user from project
     Route::delete('/remove/{project}/{user}', [ProjectController::class, 'removeUser'])->name('projects.removeuser');
-
+    
+    // chart data
+    Route::get('/projects/{project}/chart-data', [ProjectController::class, 'chartData']);
+    
 
     // tasks
     Route::get('{project:slug}/tasks', [TaskController::class, 'index'])->name('tasks.index');

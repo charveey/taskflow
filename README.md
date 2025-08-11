@@ -17,8 +17,9 @@ php artisan migrate
 
 Install node packages and run
 
+install chart js
 ```
-npm install @alpinejs/sort
+npm install chart.js
 ```
 
 ```

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\ProjectUser;
+use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -112,6 +113,20 @@ class ProjectController extends Controller
 
         return to_route('projects.users', ['project' => $project])
                     ->with(['error' => 'could not remove user']);
+    }
+
+    public function chartData($project_id) {
+
+        $tasks = Task::with('user')
+                    ->select('user_id', \DB::raw('count(*) as total'))
+                    ->where('project_id', $project_id)
+                    ->groupBy('user_id')
+                    ->get();
+
+        return response()->json([
+            'tasks' => $tasks
+        ]);
+
     }
 
 }

@@ -20,6 +20,7 @@ class BoardController extends Controller
         $project_id = request()->query('project_id');
 
         $tasks = Task::with('user')->where('project_id', $project_id)
+                ->orderBy('updated_at', 'asc')
                 ->get();
 
         return response()->json([
