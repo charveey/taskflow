@@ -24,7 +24,7 @@
                             data: {
                                 labels: this.data.map(row => row.user.name.split(' ')[0]),
                                 datasets: [{
-                                    label: 'Number Of Tasks Assigned To Users',
+                                    label: 'Tasks Assigned To Users',
                                     data: this.data.map(row => row.total),
                                     borderColor: 'rgb(0, 80, 239, 1)',
                                     backgroundColor: 'rgb(0, 80, 239, 0.2)',

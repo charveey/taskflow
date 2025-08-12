@@ -10,7 +10,7 @@
     </div>
     <div class="lg:mt-6 lg:h-4/5 flex flex-col gap-2">
         {{-- todo --}}
-        <div class="flex gap-3 items-center bg-blue-50 text-blue-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-blue-300 border border-blue-300 dark:border-blue-600">
+        <div class="flex gap-3 items-center bg-blue-50 text-blue-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-blue-300/85 border border-blue-300 dark:border-blue-600/50">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
             </svg>
@@ -18,7 +18,7 @@
             <p class="ml-auto">{{ $tasks->where('status', 'todo')->count() }}</p>
         </div>
         {{-- progress --}}
-        <div class="flex gap-3 items-center bg-yellow-50 text-yellow-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-yellow-200 border border-yellow-300 dark:border-yellow-600">
+        <div class="flex gap-3 items-center bg-yellow-50 text-yellow-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-yellow-200/85 border border-yellow-300 dark:border-yellow-600/50">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
@@ -26,7 +26,7 @@
             <p class="ml-auto">{{ $tasks->where('status', 'progress')->count() }}</p>
         </div>
         {{-- done --}}
-        <div class="flex gap-3 items-center bg-green-50 text-green-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-green-300 border border-green-300 dark:border-green-600">
+        <div class="flex gap-3 items-center bg-green-50 text-green-800 text-sm font-medium px-2.5 py-1 rounded-lg dark:bg-transparent dark:text-green-300/85 border border-green-300 dark:border-green-600/50">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>

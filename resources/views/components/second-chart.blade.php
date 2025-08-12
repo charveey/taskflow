@@ -42,7 +42,7 @@ function secondChart() {
                             data: {
                                 labels: this.data.map(row => format(row.date)),
                                 datasets: [{
-                                    label: 'Number Of Tasks Completed Per Day',
+                                    label: 'Tasks Completed Per Day',
                                     data: this.data.map(row => row.total),
                                     borderColor: 'rgb(0, 80, 239, 1)',  // Line color
                                     backgroundColor: 'rgb(0, 80, 239, 0.2)', // Fill under the line
