@@ -1,10 +1,10 @@
 @props(['project', 'tasks'])
 
-<div x-data="board()" x-init="init()" class="w-full lg:max-w-5xl min-h-[540px] my-6 p-4 px-8 flex flex-col md:flex-row gap-4 mx-auto bg-white shadow rounded-md dark:bg-neutral-900">
+<div x-data="board()" x-init="init()" class="w-full lg:max-w-5xl min-h-[540px] my-6 p-4 px-8 flex flex-col md:flex-row gap-4 mx-auto bg-white border border-gray-200 shadow rounded-md dark:bg-neutral-900 dark:border-gray-800">
     {{-- todo --}}
     <x-tasks-board-column title="Todo" @drop="drop($event, 'todo')" @dragover.prevent="">
         <template x-for="task in tasks.filter(t => t.status == 'todo')">
-            <div draggable="true" @dragstart="drag(task.id)" class="cursor-grab bg-white dark:bg-neutral-900 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:bg-neutral-900/80 dark:border-neutral-800">
+            <div draggable="true" @dragstart="drag(task.id)" class="text-sm cursor-pointer bg-white dark:bg-neutral-700 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:border-neutral-800">
                 <p class="mb-2" x-text="task.title"></p>
                 <div class="flex items-center justify-between text-gray-900 whitespace-nowrap dark:text-gray-300">
                     {{-- avatar & name --}}
@@ -33,7 +33,7 @@
     {{-- Progress --}}
     <x-tasks-board-column title="Progress" @drop="drop($event, 'progress')" @dragover.prevent="">
         <template x-for="task in tasks.filter(t => t.status == 'progress')">
-            <div draggable="true" @dragstart="drag(task.id)" class="cursor-grab bg-white dark:bg-neutral-900 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:bg-neutral-900/80 dark:border-neutral-800">
+            <div draggable="true" @dragstart="drag(task.id)" class="text-sm cursor-pointer bg-white dark:bg-neutral-700 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:border-neutral-800">
                 <p class="mb-2" x-text="task.title"></p>
                 <div class="flex items-center justify-between text-gray-900 whitespace-nowrap dark:text-gray-300">
                     {{-- avatar & name --}}
@@ -62,7 +62,7 @@
     {{-- done --}}
     <x-tasks-board-column title="Done" @drop="drop($event, 'done')" @dragover.prevent="">
         <template x-for="task in tasks.filter(t => t.status == 'done')">
-            <div draggable="true" @dragstart="drag(task.id)" class="cursor-grab bg-white dark:bg-neutral-900 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:bg-neutral-900/80 dark:border-neutral-800">
+            <div draggable="true" @dragstart="drag(task.id)" class="text-sm cursor-pointer bg-white dark:bg-neutral-700 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:border-neutral-800">
                 <p class="mb-2" x-text="task.title"></p>
                 <div class="flex items-center justify-between text-gray-900 whitespace-nowrap dark:text-gray-300">
                     {{-- avatar & name --}}

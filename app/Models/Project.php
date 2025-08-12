@@ -29,7 +29,7 @@ class Project extends Model
     }
 
     public function completedAvg() {
-        $tasks = $this->tasks()->count();
+        $tasks = $this->tasks()->count() !== 0 ? $this->tasks()->count() : 1;
         $doneTasks = $this->tasks()->where('status', 'done')->count();
 
         return round( $doneTasks * 100 / $tasks );

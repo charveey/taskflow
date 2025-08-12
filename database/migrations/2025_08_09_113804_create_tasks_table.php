@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('priority')->nullable();
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->date('done_at')->nullable();
             $table->timestamps();
         });
     }

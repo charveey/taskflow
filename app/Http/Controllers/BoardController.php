@@ -37,9 +37,18 @@ class BoardController extends Controller
         $task = Task::findOrFail($task_id);
 
         if($task) {
-            $task->update([
-                'status' => $new_status,
-            ]);
+            if($new_status == 'done') {
+                $task->update([
+                    'done_at' => date('Y-M-d'),
+                    'status' => $new_status,
+                ]);
+            } 
+            else {
+                $task->update([
+                    'done_at' => null,
+                    'status' => $new_status,
+                ]);
+            }
         }
 
         return response()->json([

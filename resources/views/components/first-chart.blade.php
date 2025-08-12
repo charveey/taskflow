@@ -1,4 +1,4 @@
-@props(['project', 'tasks'])
+@props(['project'])
 
 <div x-data="chart()" x-init="initChart()" class="w-full min-h-44 p-2.5 border border-gray-300 shadow-sm bg-white dark:border-none dark:bg-neutral-900 rounded-md">
     <canvas id="first_chart" height="176px"></canvas>
@@ -21,14 +21,13 @@
                         document.getElementById('first_chart'),
                         {
                             type: 'bar',
-                            data: 
-                            {
+                            data: {
                                 labels: this.data.map(row => row.user.name.split(' ')[0]),
                                 datasets: [{
                                     label: 'Number Of Tasks Assigned To Users',
                                     data: this.data.map(row => row.total),
+                                    borderColor: 'rgb(0, 80, 239, 1)',
                                     backgroundColor: 'rgb(0, 80, 239, 0.2)',
-                                    borderColor: 'rgb(0, 80, 239, 0.9)',
                                     borderWidth: 1,
                                     borderRadius: 5,
                                 }]
@@ -44,6 +43,13 @@
                                         borderColor: '#444'
                                     }
                                 },
+                                scales: {
+                                    y: {
+                                        ticks: {
+                                            stepSize: 1,
+                                        }
+                                    }
+                                }
                             }
                         }
                     );
