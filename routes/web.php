@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BoardController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SearchController;
@@ -42,6 +43,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/board/tasks/all', [BoardController::class, 'getTasks']);
     // update task status
     Route::post('/task/status/update', [BoardController::class, 'updateStatus'])->name('board.updateStatus');
+    
+    // comments
+    Route::get('{project:slug}/comments', [CommentController::class, 'index'])->name('comments.index');
+    Route::post('/comments/create', [CommentController::class, 'store'])->name('comments.store');
 
 
     // profile routes

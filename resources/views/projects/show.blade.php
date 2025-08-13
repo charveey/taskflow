@@ -15,7 +15,7 @@
         <div class="dark:text-gray-200">
     
             <div class="w-full flex items-start gap-2 py-2 px-3 md:px-4 text-indigo-600 dark:bg-text-800">
-                <h2 class="text-xl md:text-2xl lg:text-4xl xl:text-5xl py-4 md:py-6 lg:py-9 font-bold">{{ Str::words($project->title, 10) }}</h2>
+                <h2 class="text-xl md:text-2xl lg:text-4xl xl:text-5xl py-4 md:py-6 lg:py-8 font-bold">{{ Str::words($project->title, 10) }}</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-5 p-3 md:p-4 text-sm">

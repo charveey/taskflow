@@ -28,6 +28,10 @@ class Project extends Model
         return $this->hasMany(Task::class);
     }
 
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
     public function completedAvg() {
         $tasks = $this->tasks()->count() !== 0 ? $this->tasks()->count() : 1;
         $doneTasks = $this->tasks()->where('status', 'done')->count();

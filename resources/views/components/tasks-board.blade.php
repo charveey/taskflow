@@ -3,18 +3,17 @@
 <div x-data="board()" x-init="init()" class="w-full lg:max-w-5xl min-h-[540px] my-6 p-4 px-8 flex flex-col md:flex-row gap-4 mx-auto bg-white border border-gray-200 shadow rounded-md dark:bg-neutral-900 dark:border-gray-800">
     {{-- todo --}}
     <x-tasks-board-column title="Todo" @drop="drop($event, 'todo')" @dragover.prevent="">
-        <template x-for="task in tasks.filter(t => t.status == 'todo')">
-            <div draggable="true" @dragstart="drag(task.id)" class="text-sm cursor-pointer bg-white dark:bg-neutral-700 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:border-neutral-800">
+        <template x-for="task in tasks.filter(t => t.status == 'todo')" :key="task.id">
+            {{-- card --}}
+            <x-board-task-card>
                 <p class="mb-2" x-text="task.title"></p>
                 <div class="flex items-center justify-between text-gray-900 whitespace-nowrap dark:text-gray-300">
-                    {{-- avatar & name --}}
                     <div class="flex items-center justify-between">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 dark:text-gray-400">
-                        <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
                         </svg>
                         <p class="ps-1 font-semibold text-sm" x-text="task.user.name"></p>
                     </div>  
-                    {{-- priority badge --}}
                     <span
                         :class="{
                             'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300': task.priority === 'low',
@@ -23,17 +22,17 @@
                         }"
                         class="text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm"
                         x-text="task.priority"
-                        >
-                    </span>
+                    ></span>
                 </div>
-            </div>
+            </x-board-task-card>
         </template>
     </x-tasks-board-column>
 
     {{-- Progress --}}
     <x-tasks-board-column title="Progress" @drop="drop($event, 'progress')" @dragover.prevent="">
         <template x-for="task in tasks.filter(t => t.status == 'progress')">
-            <div draggable="true" @dragstart="drag(task.id)" class="text-sm cursor-pointer bg-white dark:bg-neutral-700 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:border-neutral-800">
+            {{-- card --}}
+            <x-board-task-card>
                 <p class="mb-2" x-text="task.title"></p>
                 <div class="flex items-center justify-between text-gray-900 whitespace-nowrap dark:text-gray-300">
                     {{-- avatar & name --}}
@@ -55,14 +54,15 @@
                         >
                     </span>
                 </div>
-            </div>
+            </x-board-task-card>
         </template>
     </x-tasks-board-column>
 
     {{-- done --}}
     <x-tasks-board-column title="Done" @drop="drop($event, 'done')" @dragover.prevent="">
         <template x-for="task in tasks.filter(t => t.status == 'done')">
-            <div draggable="true" @dragstart="drag(task.id)" class="text-sm cursor-pointer bg-white dark:bg-neutral-700 mx-1.5 p-2 rounded-md border border-gray-200 shadow dark:border-neutral-800">
+            {{-- card --}}
+            <x-board-task-card>
                 <p class="mb-2" x-text="task.title"></p>
                 <div class="flex items-center justify-between text-gray-900 whitespace-nowrap dark:text-gray-300">
                     {{-- avatar & name --}}
@@ -84,9 +84,24 @@
                         >
                     </span>
                 </div>
-            </div>
+            </x-board-task-card>
         </template>
     </x-tasks-board-column>
+
+    <!-- Task show modal -->
+    <div x-data="{ selectedTask: null }" @open-task-modal.window="selectedTask = tasks.find(t => t.id === $event.detail.id)">
+        <x-modal name="task_details" :show="false" maxWidth='xl'>
+            <div class="p-4 lg:p-6 flex flex-col dark:bg-neutral-900">
+                <template x-if="selectedTask">
+                    <x-board-show-task />
+                </template>
+                <x-secondary-button x-on:click="$dispatch('close')" class="ml-auto mt-6 capitalize">
+                    close
+                </x-secondary-button>
+            </div>
+        </x-modal>
+    </div>
+
 </div>
 
 <script>
