@@ -32,7 +32,7 @@
         {{-- details --}}
         <a href="{{ route('comments.index', $project) }}" class="block col-span-2">
             <x-secondary-button class="w-full capitalize">
-                <span>+{{ $project->comments->count() - 1}} More Comments</span>
+                <span>{{ $project->comments->count() > 1 ? '+'.($project->comments->count() - 1).' More Comments' : 'No Comments' }} </span>
             </x-secondary-button>
         </a>
     </div>

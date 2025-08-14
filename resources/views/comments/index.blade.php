@@ -16,7 +16,7 @@
 
             {{-- loop on comments --}}
             @foreach($project->comments as $comment)
-                <div class="min-h-52 p-3 bg-white rounded-xl shadow-sm border dark:bg-neutral-900 dark:border-gray-900">
+                <div class="min-h-52 p-3 bg-white rounded-xl shadow-sm border border-gray-300 dark:bg-neutral-900 dark:border-gray-900">
                 {{-- user --}}
                     <div class="flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 dark:text-gray-400">
