@@ -125,6 +125,7 @@ class ProjectController extends Controller
 
         $tasks_completed = Task::selectRaw("done_at as date, count(*) as total")
                     ->where('status', 'done')
+                    ->where('project_id', $project_id)
                     ->groupBy('done_at')
                     ->orderBy('done_at')
                     ->get();

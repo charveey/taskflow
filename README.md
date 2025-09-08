@@ -17,10 +17,6 @@ php artisan migrate
 
 Install node packages and run
 
-install chart js
-```
-npm install chart.js
-```
 
 ```
 npm install

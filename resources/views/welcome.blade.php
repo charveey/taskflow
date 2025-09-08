@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,7 +64,7 @@
                             Manage your projects effortlessly with our intuitive task board.
                             Track progress, update statuses, and collaborate in real time. All in one place.
                         </p>
-                        <a>
+                        <a href="#features">
                             <x-secondary-button class="bg-white">
                                 Explore
                             </x-secondary-button>
@@ -78,24 +78,36 @@
             </div>
         </div>
 
-        {{-- features --}}
+        {{-- projects --}}
         <div class="w-full lg:max-w-7xl mx-auto lg:py-24">
             <h2 class="w-fit mx-auto text-3xl font-medium lg:text-7xl text-gray-600">Your Projects</h2>
             <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                {{-- projects --}}
-                @foreach (auth()->user()->projects() as $project)
-                    <x-project-card :project='$project'/>
-                @endforeach 
+                @auth
+                    {{-- projects --}}
+                    @foreach (auth()->user()->projects() as $project)
+                        <x-project-card :project='$project'/>
+                    @endforeach 
+                    {{-- create project --}}
+                    <x-create-project />
+                @endauth
 
-                {{-- create project --}}
-                <x-create-project />
+                @guest
+                    <a href="{{route('login')}}" class="h-full min-h-56 w-full flex items-center justify-center transition-all text-neutral-400 hover:text-neutral-900 hover:bg-gray-200 border border-dashed border-neutral-500 rounded-xl dark:hover:text-neutral-50 dark:bg-neutral-800 dark:hover:bg-neutral-700">
+                        <div class="flex flex-col items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 block">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            <p>Create New Project</p>
+                        </div>
+                    </a>   
+                @endguest
 
             </div>
         </div>
 
         {{-- features --}}
-        <div class="w-full lg:max-w-7xl mx-auto lg:py-24">
+        <div id="features" class="w-full lg:max-w-7xl mx-auto lg:py-24">
             <h2 class="w-fit mx-auto text-3xl font-medium lg:text-7xl text-gray-600">Features</h2>
             <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
